@@ -169,7 +169,7 @@ int main() {
         cout << "6. 按成绩排序学生信息" << endl;
         cout << "7. 按年龄排序学生信息" << endl;
         cout << "8. 显示性别统计" << endl;
-        cout << "9. 退出" << endl;
+        cout << "9. 系统退出" << endl;
         cout << "请输入您的选择：";
         cin >> choice;
 
