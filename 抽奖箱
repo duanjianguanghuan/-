@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>抽奖箱</title>
+      <style>
+          body {
+              font-family: 'Arial', sans-serif;
+              background-color: #f7f7f7;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+          }
+          #lottery-container {
+              background-color: #fff;
+              padding: 20px;
+              border-radius: 10px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              text-align: center;
+          }
+          #draw-btn, #reset-btn {
+              padding: 10px 20px;
+              margin: 10px;
+              border: none;
+              background-color: #007bff;
+              color: white;
+              border-radius: 5px;
+              cursor: pointer;
+              font-size: 16px;
+              transition: background-color 0.3s;
+          }
+          #draw-btn:hover, #reset-btn:hover {
+              background-color: #0056b3;
+          }
+          #result, #prize-details {
+              margin-top: 20px;
+              font-size: 20px;
+              color: green;
+              animation: fadeIn 1s;
+          }
+          #history {
+              margin-top: 10px;
+              font-size: 16px;
+              color: #555;
+          }
+          .prize-record {
+              margin-top: 5px;
+              padding: 5px;
+              background-color: #e9ecef;
+              border-radius: 5px;
+              display: inline-block;
+              margin-right: 10px;
+              margin-bottom: 5px;
+          }
+          .prize-record span {
+              font-weight: bold;
+          }
+          @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+          }
+      </style>
+</head>
+<body>
+      <div id="lottery-container">
+          <h1>点击按钮进行抽奖</h1>
+          <button id="draw-btn">抽奖</button>
+          <button id="reset-btn">重置</button>
+          <div id="result"></div>
+          <div id="prize-details"></div>
+          <div id="history"></div>
+      </div>
+
+      <script>
+          const prizes = [
+              { name: "分餐一份", weight: 5 },
+              { name: "一瓶雪碧", weight: 5 },
+              { name: "一杯六块钱的雪碧", weight: 5 },
+              { name: "一瓶可乐", weight: 5 },
+              { name: "一杯六块钱的可乐", weight: 5 },
+              { name: "三块五袋装方便面", weight: 5 },
+              { name: "五块五桶装方便面", weight: 5 },
+              { name: "一根肉肠", weight: 5 },
+              { name: "一个五块钱的手抓饼", weight: 5 },
+              { name: "一个八块钱的手抓饼", weight: 5 },
+              { name: "一个十块钱的钵钵鸡", weight: 5 },
+              { name: "一杯十块钱的奶茶", weight: 5 },
+              { name: "恭喜你没有中奖", weight: 50 }
+          ];
+          let history = [];
+
+          const drawBtn = document.getElementById('draw-btn');
+          const resetBtn = document.getElementById('reset-btn');
+          const resultDiv = document.getElementById('result');
+          const prizeDetailsDiv = document.getElementById('prize-details');
+          const historyDiv = document.getElementById('history');
+
+          function drawPrize() {
+              let totalWeight = prizes.reduce((sum, prize) => sum + prize.weight, 0);
+              let randomWeight = Math.floor(Math.random() * totalWeight);
+              let currentWeight = 0;
+
+              for (const prize of prizes) {
+                  currentWeight += prize.weight;
+                  if (randomWeight < currentWeight) {
+                      return prize;
+                  }
+              }
+          }
+
+          drawBtn.addEventListener('click', function() {
+              let prize = drawPrize();
+              resultDiv.textContent = `恭喜你，获得了：${prize.name}`;
+              prizeDetailsDiv.textContent = `奖品详情：${prize.name}`;
+              history.push(prize.name);
+              historyDiv.innerHTML = `历史记录：<br>${history.map(p => `<span class="prize-record">${p}</span>`).join(', ')}`;
+          });
+
+          resetBtn.addEventListener('click', function() {
+              resultDiv.textContent = '';
+              prizeDetailsDiv.textContent = '';
+              history = [];
+              historyDiv.innerHTML = '历史记录：<br>';
+          });
+      </script>
+</body>
+</html>
