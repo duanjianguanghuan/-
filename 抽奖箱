@@ -77,19 +77,19 @@
 
       <script>
           const prizes = [
-              { name: "分餐一份", weight: 5 },
-              { name: "一瓶雪碧", weight: 5 },
-              { name: "一杯六块钱的雪碧", weight: 5 },
-              { name: "一瓶可乐", weight: 5 },
-              { name: "一杯六块钱的可乐", weight: 5 },
-              { name: "三块五袋装方便面", weight: 5 },
-              { name: "五块五桶装方便面", weight: 5 },
-              { name: "一根肉肠", weight: 5 },
-              { name: "一个五块钱的手抓饼", weight: 5 },
-              { name: "一个八块钱的手抓饼", weight: 5 },
-              { name: "一个十块钱的钵钵鸡", weight: 5 },
-              { name: "一杯十块钱的奶茶", weight: 5 },
-              { name: "恭喜你没有中奖", weight: 50 }
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 5 },
+              { name: "******", weight: 50 }
           ];
           let history = [];
 
